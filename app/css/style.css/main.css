@@ -1,0 +1,9 @@
+body {
+  color: rgba(47, 85, 114, 0.8);
+  padding: 25px;
+  margin: 11px;
+  columns: 300px 2; }
+
+.box a {
+  display: block;
+  padding: 10px; }
