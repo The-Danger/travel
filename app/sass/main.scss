@@ -11,11 +11,9 @@
 @import "pages/home";
 
 
-$mainBlue: #2f5572;
-
 body {
 
-  color: rgba($mainBlue, 0.8);
+  color: rgba($mainBlue, 0.9);
   padding: 25px;
   margin: 11px;
   columns: 300px 4;

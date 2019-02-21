@@ -1,0 +1,13 @@
+
+body {
+  color: rgba(47, 85, 114, 0.9);
+  padding: 25px;
+  margin: 11px;
+  columns: 300px 4; }
+
+.box a {
+  display: block;
+  padding: 10px; }
+
+.header__logo-box {
+  position: absolute; }
