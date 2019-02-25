@@ -4,31 +4,13 @@
 
 
 @import "base/animations";
+@import "../node_modules/normalize.css/normalize";
 @import "base/base";
 @import "base/typography";
 @import "base/utilities";
 
 @import "pages/home";
 
+@import "components/_large-hero";
 
-body {
 
-  color: rgba($mainBlue, 0.9);
-  padding: 25px;
-  margin: 11px;
-  columns: 300px 4;
-}
-
-.box {
-  a {
-    display: block;
-    padding: 10px;
-  }
-}
-
-.header {
-
-  &__logo-box {
-    position: absolute;
-  }
-}
