@@ -5,15 +5,16 @@
 
 @import "base/animations";
 @import "../node_modules/normalize.css/normalize";
-@import "base/global";
 @import "base/typography";
 @import "base/utilities";
 @import "base/variables";
 @import "base/mixins";
+@import "base/global";
 @import "components/wrapper";
 @import "components/page-section";
 @import "components/headline";
 @import "components/row";
+@import "components/generic-content-container";
 
 @import "pages/home";
 
