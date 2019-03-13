@@ -1,6 +1,16 @@
 .testimonial {
     background-color: rgba(255, 255, 255, .8);
-    padding: 0 1.8125rem 1px 1.8125rem;
+    padding: 0 18px 1px 18px;
+    margin-bottom: 80px + 18px; //added an extra 18px
+
+    @include atLarge {
+        padding: 0 1.8125rem 1px 1.8125rem;
+        margin-bottom: 0; // 0 out margin bottom from small screens
+    }
+
+    &--last {
+        margin-bottom: 0;
+    }
 
     &__photo {
         border-radius: 80px;
@@ -28,4 +38,6 @@
         font-size: 0.9375rem;
         margin: 0.25rem 0 1rem 0;
     }
+
+
 }
