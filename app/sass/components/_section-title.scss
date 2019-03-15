@@ -24,6 +24,11 @@
         margin-right: auto;
         margin-bottom: 0.6rem;
 
+        height: 4rem;
+        width: 4rem;
+
+        
+
         @include atSmall {
             margin-right: 0.5rem;
             margin-left: 0;

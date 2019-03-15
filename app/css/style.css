@@ -510,7 +510,9 @@ a {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 0.6rem; }
+    margin-bottom: 0.6rem;
+    height: 4rem;
+    width: 4rem; }
     @media only screen and (min-width: 530px) {
       .section-title__icon {
         margin-right: 0.5rem;
@@ -526,7 +528,9 @@ a {
       padding-left: 94px; } }
   .feature-item__icon {
     display: block;
-    margin: 0 auto; }
+    margin: 0 auto;
+    height: 4rem;
+    width: 4rem; }
     @media only screen and (min-width: 530px) {
       .feature-item__icon {
         position: absolute;
