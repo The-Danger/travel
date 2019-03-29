@@ -2,7 +2,7 @@
   "name": "travel",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "ts/main.js",
   "scripts": {
     "watch:ts": "tsc -w",
     "watch:sass": "node-sass sass/main.scss css/style.css -w",
