@@ -1,16 +1,4 @@
-interface Friend {
-    firstName: string;
-}
+import {Developer} from './friends';
 
-function printFirstNames (friends: Friend[]){
-    for(let friend of friends) {
-        console.log(friend.firstName);
-    }
-}
-
-printFirstNames([
-    {firstName: "Thomas"},
-    {firstName: "Julia"},
-    {firstName: "Anna"}
-
-]);
+var dev = new Developer("Thomas");
+dev.knowsTypeScript = true;
