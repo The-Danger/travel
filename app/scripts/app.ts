@@ -1,11 +1,7 @@
-import {Developer} from './modules/friends';
+//import {Developer} from './modules/friends';
 
-import {Jquerytest} from './modules/jquerytest';
+import {MobileMenu} from './modules/MobileMenu';
 
+const mobileMenu = new MobileMenu();
 
-var dev = new Developer("Thomas");
-dev.knowsTypeScript = true;
-
-var jquerytest = new Jquerytest();
-jquerytest.takeAction();
 

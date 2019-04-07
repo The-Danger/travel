@@ -45,33 +45,14 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
+	//import {Developer} from './modules/friends';
 	Object.defineProperty(exports, "__esModule", { value: true });
-	const friends_1 = __webpack_require__(1);
-	const jquerytest_1 = __webpack_require__(2);
-	var dev = new friends_1.Developer("Thomas");
-	dev.knowsTypeScript = true;
-	var jquerytest = new jquerytest_1.Jquerytest();
-	jquerytest.takeAction();
+	const MobileMenu_1 = __webpack_require__(1);
+	const mobileMenu = new MobileMenu_1.MobileMenu();
 
 
 /***/ },
 /* 1 */
-/***/ function(module, exports) {
-
-	"use strict";
-	Object.defineProperty(exports, "__esModule", { value: true });
-	class Friend {
-	    constructor(firstName) {
-	        this.firstName = firstName;
-	    }
-	}
-	class Developer extends Friend {
-	}
-	exports.Developer = Developer;
-
-
-/***/ },
-/* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -79,17 +60,35 @@
 	    return (mod && mod.__esModule) ? mod : { "default": mod };
 	};
 	Object.defineProperty(exports, "__esModule", { value: true });
-	const jquery_1 = __importDefault(__webpack_require__(3));
-	class Jquerytest {
-	    takeAction() {
-	        jquery_1.default('h2').append("test");
+	const jquery_1 = __importDefault(__webpack_require__(2));
+	class MobileMenu {
+	    constructor() {
+	        this.menuIcon = jquery_1.default('.site-header__menu-icon');
+	        this.menuContent = jquery_1.default('.site-header__menu-content');
+	        this.siteHeader = jquery_1.default('.site-header');
+	        this.events();
+	        /* $('.site-header__menu-icon').on("click", (event) =>
+	        {console.log('menu icon clicked');
+	        }); */
+	    }
+	    events() {
+	        this.menuIcon.on("click", (event) => {
+	            this.toggleTheMenu();
+	        });
+	        // alternative way to do same thing
+	        //this.menuIcon.click(this.toggleTheMenu.bind(this));
+	    }
+	    toggleTheMenu() {
+	        this.menuContent.toggleClass('site-header__menu-content--is-visible');
+	        this.siteHeader.toggleClass('site-header--is-expanded');
+	        this.menuIcon.toggleClass('site-header__menu-icon--close-x');
 	    }
 	}
-	exports.Jquerytest = Jquerytest;
+	exports.MobileMenu = MobileMenu;
 
 
 /***/ },
-/* 3 */
+/* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
