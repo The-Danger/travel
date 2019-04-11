@@ -45,53 +45,20 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var MobileMenu_1 = __webpack_require__(1);
-	var RevealOnScroll_1 = __webpack_require__(3);
-	var mobileMenu = new MobileMenu_1.MobileMenu();
-	var revealOnScroll = new RevealOnScroll_1.RevealOnScroll();
-
-
-/***/ },
-/* 1 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
 	var __importDefault = (this && this.__importDefault) || function (mod) {
 	    return (mod && mod.__esModule) ? mod : { "default": mod };
 	};
 	Object.defineProperty(exports, "__esModule", { value: true });
-	var jquery_1 = __importDefault(__webpack_require__(2));
-	var MobileMenu = /** @class */ (function () {
-	    function MobileMenu() {
-	        this.menuIcon = jquery_1.default('.site-header__menu-icon');
-	        this.menuContent = jquery_1.default('.site-header__menu-content');
-	        this.siteHeader = jquery_1.default('.site-header');
-	        this.events();
-	        /* $('.site-header__menu-icon').on("click", (event) =>
-	        {console.log('menu icon clicked');
-	        }); */
-	    }
-	    MobileMenu.prototype.events = function () {
-	        var _this = this;
-	        this.menuIcon.on("click", function (event) {
-	            _this.toggleTheMenu();
-	        });
-	        // alternative way to do same thing
-	        //this.menuIcon.click(this.toggleTheMenu.bind(this));
-	    };
-	    MobileMenu.prototype.toggleTheMenu = function () {
-	        this.menuContent.toggleClass('site-header__menu-content--is-visible');
-	        this.siteHeader.toggleClass('site-header--is-expanded');
-	        this.menuIcon.toggleClass('site-header__menu-icon--close-x');
-	    };
-	    return MobileMenu;
-	}());
-	exports.MobileMenu = MobileMenu;
+	var jquery_1 = __importDefault(__webpack_require__(1));
+	var MobileMenu_1 = __webpack_require__(2);
+	var RevealOnScroll_1 = __webpack_require__(3);
+	var mobileMenu = new MobileMenu_1.MobileMenu();
+	var revealOnScrollFeatureItem = new RevealOnScroll_1.RevealOnScroll(jquery_1.default(".feature-item"), '85%');
+	var revealOnScrollTestimonial = new RevealOnScroll_1.RevealOnScroll(jquery_1.default(".testimonial"), '60%');
 
 
 /***/ },
-/* 2 */
+/* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10461,6 +10428,44 @@
 
 
 /***/ },
+/* 2 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __importDefault = (this && this.__importDefault) || function (mod) {
+	    return (mod && mod.__esModule) ? mod : { "default": mod };
+	};
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var jquery_1 = __importDefault(__webpack_require__(1));
+	var MobileMenu = /** @class */ (function () {
+	    function MobileMenu() {
+	        this.menuIcon = jquery_1.default('.site-header__menu-icon');
+	        this.menuContent = jquery_1.default('.site-header__menu-content');
+	        this.siteHeader = jquery_1.default('.site-header');
+	        this.events();
+	        /* $('.site-header__menu-icon').on("click", (event) =>
+	        {console.log('menu icon clicked');
+	        }); */
+	    }
+	    MobileMenu.prototype.events = function () {
+	        var _this = this;
+	        this.menuIcon.on("click", function (event) {
+	            _this.toggleTheMenu();
+	        });
+	        // alternative way to do same thing
+	        //this.menuIcon.click(this.toggleTheMenu.bind(this));
+	    };
+	    MobileMenu.prototype.toggleTheMenu = function () {
+	        this.menuContent.toggleClass('site-header__menu-content--is-visible');
+	        this.siteHeader.toggleClass('site-header--is-expanded');
+	        this.menuIcon.toggleClass('site-header__menu-icon--close-x');
+	    };
+	    return MobileMenu;
+	}());
+	exports.MobileMenu = MobileMenu;
+
+
+/***/ },
 /* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -10469,28 +10474,45 @@
 	    return (mod && mod.__esModule) ? mod : { "default": mod };
 	};
 	Object.defineProperty(exports, "__esModule", { value: true });
-	var jquery_1 = __importDefault(__webpack_require__(2));
+	var jquery_1 = __importDefault(__webpack_require__(1));
 	//import {Waypoint} from '../../node_modules/waypoints/lib/noframework.waypoints';
 	var Waypoint = __webpack_require__(4);
 	// note: (1) added node types via npm i @types/node and (2) added require() in this file and (3) added module.exports = Waypoint in noframework.waypoints.js 
 	// to deal with Systemjs 'Waypoint is not a constructor' error
 	var RevealOnScroll = /** @class */ (function () {
-	    function RevealOnScroll() {
-	        this.revealableItems = jquery_1.default('.feature-item');
+	    function RevealOnScroll(domSelectorToRevealOnScroll, waypointOffsetPercentage) {
+	        this._domSelectorToRevealOnScroll = domSelectorToRevealOnScroll;
+	        this._waypointOffsetPercentage = waypointOffsetPercentage;
+	        //this.revealableItems = $('.feature-item');
+	        this.revealableItems = this._domSelectorToRevealOnScroll;
 	        this.HideItems();
 	        this.CreateWaypoints();
 	    }
 	    RevealOnScroll.prototype.HideItems = function () {
 	        this.revealableItems.addClass('revealable-item');
 	    };
+	    // CreateWaypoints() {
+	    //     this.revealableItems.each(function () {
+	    //         var curritem = this;
+	    //         new Waypoint({
+	    //             element: curritem,
+	    //             handler: function () {
+	    //                 $(curritem).addClass('revealable-item--is-visible');
+	    //             },
+	    //             offset: "85%"
+	    //         });
+	    //     });
+	    // }
 	    RevealOnScroll.prototype.CreateWaypoints = function () {
+	        var that = this;
 	        this.revealableItems.each(function () {
 	            var curritem = this;
 	            new Waypoint({
 	                element: curritem,
 	                handler: function () {
 	                    jquery_1.default(curritem).addClass('revealable-item--is-visible');
-	                }
+	                },
+	                offset: that._waypointOffsetPercentage
 	            });
 	        });
 	    };

@@ -731,9 +731,11 @@ a {
 
 .revealable-item {
   opacity: 0;
-  transition: opacity 1.5s ease-out; }
+  transition: all 1.5s ease-out;
+  transform: scale(1.15); }
   .revealable-item--is-visible {
-    opacity: 1; }
+    opacity: 1;
+    transform: scale(1); }
 
 .large-hero {
   border-bottom: 10px solid #2f5572;

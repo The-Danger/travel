@@ -9,11 +9,21 @@ var Waypoint = require('../../node_modules/waypoints/lib/noframework.waypoints')
 export class RevealOnScroll {
 
     revealableItems;
+    _domSelectorToRevealOnScroll;
+    _waypointOffsetPercentage; 
 
-    constructor() {
-        this.revealableItems = $('.feature-item');
+    constructor(domSelectorToRevealOnScroll, waypointOffsetPercentage) {
+
+        this._domSelectorToRevealOnScroll = domSelectorToRevealOnScroll;
+        this._waypointOffsetPercentage = waypointOffsetPercentage;
+
+        //this.revealableItems = $('.feature-item');
+        
+      
+        this.revealableItems = this._domSelectorToRevealOnScroll;
+
         this.HideItems();
-        this.CreateWaypoints();
+        this.CreateWaypoints(); 
     }
 
     HideItems() {
@@ -21,14 +31,29 @@ export class RevealOnScroll {
 
     }
 
+    // CreateWaypoints() {
+    //     this.revealableItems.each(function () {
+    //         var curritem = this;
+    //         new Waypoint({
+    //             element: curritem,
+    //             handler: function () {
+    //                 $(curritem).addClass('revealable-item--is-visible');
+    //             },
+    //             offset: "85%"
+    //         });
+    //     });
+    // }
+
     CreateWaypoints() {
+        var that = this;
         this.revealableItems.each(function () {
             var curritem = this;
             new Waypoint({
                 element: curritem,
                 handler: function () {
                     $(curritem).addClass('revealable-item--is-visible');
-                }
+                },
+                offset: that._waypointOffsetPercentage
             });
         });
     }
