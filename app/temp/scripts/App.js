@@ -52,9 +52,11 @@
 	var jquery_1 = __importDefault(__webpack_require__(1));
 	var MobileMenu_1 = __webpack_require__(2);
 	var RevealOnScroll_1 = __webpack_require__(3);
+	var StickyHeader_1 = __webpack_require__(5);
 	var mobileMenu = new MobileMenu_1.MobileMenu();
 	var revealOnScrollFeatureItem = new RevealOnScroll_1.RevealOnScroll(jquery_1.default(".feature-item"), '85%');
 	var revealOnScrollTestimonial = new RevealOnScroll_1.RevealOnScroll(jquery_1.default(".testimonial"), '60%');
+	var stickyHeader = new StickyHeader_1.StickyHeader();
 
 
 /***/ },
@@ -11273,6 +11275,75 @@
 
 	// JIM 04/19/2019 - export 'Waypoint' to deal with Systemjs 'Waypoint is not a constructor' error
 	module.exports = Waypoint;
+
+/***/ },
+/* 5 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __importDefault = (this && this.__importDefault) || function (mod) {
+	    return (mod && mod.__esModule) ? mod : { "default": mod };
+	};
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var jquery_1 = __importDefault(__webpack_require__(1));
+	var Waypoint = __webpack_require__(4);
+	var StickyHeader = /** @class */ (function () {
+	    function StickyHeader() {
+	        this._headerClassSelector = jquery_1.default('.site-header');
+	        this._headerTriggerElement = jquery_1.default('.large-hero__title');
+	        this._pageSections = jquery_1.default('.page-section');
+	        this._headerLinks = jquery_1.default('.primary-nav a');
+	        this.CreateHeaderWaypoint();
+	        this.createPageSectionWayPoints();
+	    }
+	    StickyHeader.prototype.CreateHeaderWaypoint = function () {
+	        var that = this;
+	        var _waypoint = new Waypoint({
+	            // waypoint is expecting native dom element, but, in the following, _headerTriggerElement is a jquery selector. To get a native dom element from a jquery selector,
+	            // select the first item, i.e., "that._headerTriggerElement[0]", which is native dom element
+	            element: that._headerTriggerElement[0],
+	            handler: function (direction) {
+	                if (direction == "down") {
+	                    that._headerClassSelector.addClass('site-header--dark');
+	                }
+	                else {
+	                    that._headerClassSelector.removeClass('site-header--dark');
+	                }
+	            }
+	        });
+	    };
+	    StickyHeader.prototype.createPageSectionWayPoints = function () {
+	        var that = this;
+	        this._pageSections.each(function () {
+	            var currentPageSection = this;
+	            new Waypoint({
+	                element: currentPageSection,
+	                handler: function (direction) {
+	                    if (direction == "down") {
+	                        var matchingHeaderLink = currentPageSection.getAttribute('data-matching-link');
+	                        that._headerLinks.removeClass('is-current-link');
+	                        jquery_1.default(matchingHeaderLink).addClass('is-current-link');
+	                    }
+	                },
+	                offset: "18%"
+	            });
+	            new Waypoint({
+	                element: currentPageSection,
+	                handler: function (direction) {
+	                    if (direction == "up") {
+	                        var matchingHeaderLink = currentPageSection.getAttribute('data-matching-link');
+	                        that._headerLinks.removeClass('is-current-link');
+	                        jquery_1.default(matchingHeaderLink).addClass('is-current-link');
+	                    }
+	                },
+	                offset: "-40%"
+	            });
+	        });
+	    };
+	    return StickyHeader;
+	}());
+	exports.StickyHeader = StickyHeader;
+
 
 /***/ }
 /******/ ]);
