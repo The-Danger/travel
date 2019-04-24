@@ -1,0 +1,33 @@
+.social-icons {
+    text-align: center;
+    
+
+    &__icon {
+        background-color: $mainOrange;
+        display: inline-block;
+        margin: 5px 5px 10px 5px;
+        padding: 5px;
+
+        .icon {
+            display: block;
+            flex-flow: row;
+            
+        
+          
+           svg {
+            width: 85px;
+            height: 85px;
+           
+           
+
+            @include atSmall {
+                width: 75px;
+                height: 75px;
+                margin: 0 5px;
+             }
+           }
+
+        
+        }
+    }
+}

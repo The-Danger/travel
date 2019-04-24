@@ -326,6 +326,8 @@ a {
   margin-right: auto; }
   .wrapper--medium {
     max-width: 976px; }
+  .wrapper--narrow {
+    max-width: 470px; }
   .wrapper--no-padding-until-medium {
     padding-left: 0;
     padding-right: 0; }
@@ -504,6 +506,8 @@ a {
     font-weight: 500; }
   .section-title--blue {
     color: #2f5572; }
+  .section-title--less-margin {
+    margin-bottom: 1.3rem; }
   .section-title__icon {
     position: relative;
     top: 8px;
@@ -581,7 +585,191 @@ a {
 
 .site-footer {
   background-color: #2f5572;
-  color: #FFF; }
+  color: #FFF;
+  padding: .5rem 0;
+  text-align: center; }
+  .site-footer__text {
+    display: block;
+    margin-bottom: 1rem;
+    font-weight: 200; }
+    @media only screen and (min-width: 800px) {
+      .site-footer__text {
+        display: inline;
+        margin-bottom: 0;
+        margin-right: 1.4rem; } }
+
+.site-header {
+  padding: 10px 0;
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  transition: background-color 0.3s ease-out; }
+  .site-header--is-expanded {
+    background-color: rgba(47, 85, 114, 0.55); }
+  @media only screen and (min-width: 800px) {
+    .site-header {
+      position: fixed;
+      background-color: rgba(47, 85, 114, 0.3); }
+      .site-header--dark {
+        background-color: rgba(23, 51, 72, 0.85); } }
+  @media only screen and (min-width: 800px) {
+    .site-header__btn-container {
+      float: right; } }
+  .site-header__logo {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) scale(0.8);
+    transition: transform .3s ease-out;
+    transform-origin: 50% 0%;
+    background-position: 0 0;
+    background-color: #2f5572;
+    padding: 25px 36px; }
+    @media only screen and (min-width: 800px) {
+      .site-header__logo {
+        left: auto;
+        transform: translateX(0); }
+        .site-header--dark .site-header__logo {
+          transform: scale(0.57); } }
+  .site-header__menu-icon {
+    width: 20px;
+    height: 19px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10; }
+    .site-header__menu-icon::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 20px;
+      height: 3px;
+      background-color: #FFF;
+      transform-origin: 0 0;
+      transition: transform 0.3s ease-out; }
+    .site-header__menu-icon__middle {
+      position: absolute;
+      top: 8px;
+      left: 0;
+      width: 20px;
+      height: 3px;
+      background-color: #FFF;
+      transition: all 0.3s ease-out;
+      transform-origin: 0% 50%; }
+    .site-header__menu-icon::after {
+      content: "";
+      position: absolute;
+      bottom: 0px;
+      left: 0;
+      width: 20px;
+      height: 3px;
+      background-color: #FFF;
+      transform-origin: 0 100%;
+      transition: transform 0.3s ease-out; }
+    @media only screen and (min-width: 800px) {
+      .site-header__menu-icon {
+        display: none; } }
+  .site-header__menu-icon--close-x::before {
+    transform: rotate(45deg) scaleX(1.25); }
+  .site-header__menu-icon--close-x .site-header__menu-icon__middle {
+    opacity: 0;
+    transform: scaleX(0); }
+  .site-header__menu-icon--close-x::after {
+    transform: rotate(-45deg) scaleX(1.25) translateY(1px); }
+  .site-header__menu-content {
+    opacity: 0;
+    transform: scale(1.2);
+    transition: all 0.3s ease-out;
+    padding-top: 90px;
+    text-align: center;
+    z-index: -10;
+    position: relative; }
+    @media only screen and (min-width: 800px) {
+      .site-header__menu-content {
+        opacity: 1;
+        z-index: 1;
+        padding-top: 0;
+        transform: scale(1); } }
+    .site-header__menu-content--is-visible {
+      opacity: 1;
+      z-index: 1;
+      transform: scale(1); }
+
+.primary-nav {
+  padding-top: 10px; }
+  @media only screen and (min-width: 800px) {
+    .primary-nav {
+      padding-top: 0; } }
+  @media only screen and (min-width: 800px) {
+    .primary-nav--pull-right {
+      float: right; } }
+  .primary-nav ul {
+    margin: 0;
+    padding: 0; }
+    .primary-nav ul::after {
+      content: "";
+      clear: both;
+      display: table; }
+  .primary-nav li {
+    list-style: none;
+    display: inline-block;
+    padding-right: 7px; }
+    @media only screen and (min-width: 800px) {
+      .primary-nav li {
+        float: left;
+        display: block;
+        padding-right: 20px; } }
+  .primary-nav li:last-child {
+    padding-right: 0; }
+    @media only screen and (min-width: 800px) {
+      .primary-nav li:last-child {
+        padding-right: 20px; } }
+  .primary-nav a {
+    color: #FFF;
+    text-decoration: none;
+    font-weight: 300;
+    padding: 5px 8px;
+    display: block;
+    font-size: .8rem;
+    background-color: rgba(47, 85, 114, 0.5); }
+    @media only screen and (min-width: 800px) {
+      .primary-nav a {
+        padding: 12px 0;
+        font-size: 1rem;
+        background-color: transparent; }
+        .primary-nav a.is-current-link {
+          color: #FABB69; } }
+
+.revealable-item {
+  opacity: 0;
+  transition: all 1.5s ease-out;
+  transform: scale(1.15); }
+  .revealable-item--is-visible {
+    opacity: 1;
+    transform: scale(1); }
+
+.modal {
+  position: fixed;
+  z-index: 5;
+  background-color: rgba(255, 255, 255, 0.94);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0; }
+  .modal__description {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 300;
+    line-height: 1.65; }
+
+.social-icons {
+  text-align: center; }
+  .social-icons__icon {
+    background-color: #d59541;
+    display: inline-block; }
+    .social-icons__icon .icon {
+      display: block; }
 
 .large-hero {
   border-bottom: 10px solid #2f5572;
@@ -589,12 +777,16 @@ a {
   .large-hero__image {
     display: block; }
   .large-hero__text-content {
+    padding-top: 88px;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     left: 0;
     width: 100%;
     text-align: center; }
+    @media only screen and (min-width: 800px) {
+      .large-hero__text-content {
+        padding-top: 60px; } }
   .large-hero__title {
     font-weight: 300;
     color: #2f5572;
