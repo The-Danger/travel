@@ -6,34 +6,31 @@
   <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700' rel='stylesheet' type='text/css'>
   <title>Clear View Escapes</title>
 
-  <script src="node_modules/systemjs/dist/system.js"></script>
-
-
-
-
-
-
 
   <meta name="keywords" content="Travel planning, travel bundles, travel escapes">
   <meta name="description"
     content="Your clarity. One trip away. We create soul restoring journeys that inspire you to be you.">
 
   <link rel="stylesheet" href="css/style.css">
+
+  <script src="node_modules/systemjs/dist/system.js"></script>
+
+  <script>
+      System.config({
+        baseURL: "/",
+        defaultJSExtensions: true
+      });
+      System.import('./temp/scripts/app.js')
+        .then(function () { console.log('loaded'); })
+        .catch(function (err) { console.error(err); });
+  
+    </script>
+
+  <script src="./temp/scripts/Vendor.js"></script>
+
 </head>
 
 <body>
-
-  <script>
-    System.config({
-      baseURL: "/",
-      defaultJSExtensions: true
-    });
-    System.import('./temp/scripts/app.js')
-      .then(function () { console.log('loaded'); })
-      .catch(function (err) { console.error(err); });
-
-  </script>
-
 
 
   <header class="site-header">
@@ -97,18 +94,18 @@
         Ever since, we&rsquo;ve been working to make travel <strong>better for everyone.</strong></h3>
       <div class="wrapper wrapper--medium wrapper--b-margin">
 
-        <img sizes="(min-width: 976px) 976px, 100vw"
-          srcset="assets/images/first-trip-low-res.jpg 565w, assets/images/first-trip.jpg 976w, assets/images/first-trip-hi-dpi.jpg 1952w"
+        <img class="lazyload" sizes="(min-width: 976px) 976px, 100vw"
+          data-srcset="assets/images/first-trip-low-res.jpg 565w, assets/images/first-trip.jpg 976w, assets/images/first-trip-hi-dpi.jpg 1952w"
           alt="Couple walking down a street.">
       </div>
       <div class="row row--gutters">
         <div class="row__medium-4 row__medium-4--larger row__b-margin-until-medium">
           <picture>
             <source media="(min-width: 1020px)" sizes="404px"
-              srcset="assets/images/our-start.jpg 404w, assets/images/our-start-hi-dpi.jpg 808w">
+              data-srcset="assets/images/our-start.jpg 404w, assets/images/our-start-hi-dpi.jpg 808w">
             <source media="(min-width: 800px)" sizes="320px"
-              srcset="assets/images/our-start-portrait.jpg 382w, assets/images/our-start-portrait-hi-dpi.jpg 764w">
-            <img srcset="assets/images/our-start-landscape.jpg 800w, 
+              data-srcset="assets/images/our-start-portrait.jpg 382w, assets/images/our-start-portrait-hi-dpi.jpg 764w">
+            <img class="lazyload" data-srcset="assets/images/our-start-landscape.jpg 800w, 
             assets/images/our-start-landscape-hi-dpi.jpg 1600w" alt="our founder, jane doe">
           </picture>
         </div>
@@ -196,7 +193,7 @@
     </div>
 
 
-    <div id="testimonials" class="page-section page-section--no-b-margin-until-large page-section--testimonials"
+    <div id="testimonials" class="page-section page-section--no-b-margin-until-large page-section--testimonials lazyload"
       data-matching-link="#testimonials-link">
       <div class="wrapper wrapper--no-padding-until-large">
 
@@ -214,8 +211,8 @@
           <div class="row__large-4">
             <div class="testimonial">
               <div class="testimonial__photo">
-                <img sizes="160px"
-                  srcset="assets/images/testimonial-jane.jpg 160w, assets/images/testimonial-jane-hi-dpi.jpg 320w"
+                <img class="lazyload" sizes="160px"
+                  data-srcset="assets/images/testimonial-jane.jpg 160w, assets/images/testimonial-jane-hi-dpi.jpg 320w"
                   alt="Jane Doe">
               </div>
 
@@ -236,8 +233,8 @@
           <div class="row__large-4">
             <div class="testimonial">
               <div class="testimonial__photo">
-                <img sizes="160px"
-                  srcset="assets/images/testimonial-john.jpg 160w, assets/images/testimonial-john-hi-dpi.jpg 320w"
+                <img class="lazyload" sizes="160px"
+                  data-srcset="assets/images/testimonial-john.jpg 160w, assets/images/testimonial-john-hi-dpi.jpg 320w"
                   alt="John Smith">
               </div>
 
@@ -256,8 +253,8 @@
           <div class="row__large-4">
             <div class="testimonial testimonial--last">
               <div class="testimonial__photo">
-                <img sizes="160px"
-                  srcset="assets/images/testimonial-cat.jpg 160w, assets/images/testimonial-cat-hi-dpi.jpg 320w"
+                <img class="lazyload" sizes="160px"
+                  data-srcset="assets/images/testimonial-cat.jpg 160w, assets/images/testimonial-cat-hi-dpi.jpg 320w"
                   alt="cat McKitty">
               </div>
 

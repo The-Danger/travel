@@ -11,6 +11,7 @@ export class StickyHeader {
   
     private _pageSections: JQuery<HTMLElement>; 
     private _headerLinks: JQuery<HTMLElement>;
+    private _lazyImages: JQuery<HTMLElement>;
    
 
     constructor() {
@@ -21,17 +22,25 @@ export class StickyHeader {
         this._pageSections = $('.page-section');
 
         this._headerLinks = $('.primary-nav a')
+
+        this._lazyImages = $('lazyload');
        
 
         this.CreateHeaderWaypoint ();
 
         this.createPageSectionWayPoints ();
 
+        this.RefreshWaypoints();
+
      
        
     }
 
-
+    RefreshWaypoints() {
+        this._lazyImages.on('load', function() {
+            Waypoint.refreshAll();
+        })
+    }
 
     CreateHeaderWaypoint () {
         let that = this;

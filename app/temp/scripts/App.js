@@ -11295,9 +11295,16 @@
 	        this._headerTriggerElement = jquery_1.default('.large-hero__title');
 	        this._pageSections = jquery_1.default('.page-section');
 	        this._headerLinks = jquery_1.default('.primary-nav a');
+	        this._lazyImages = jquery_1.default('lazyload');
 	        this.CreateHeaderWaypoint();
 	        this.createPageSectionWayPoints();
+	        this.RefreshWaypoints();
 	    }
+	    StickyHeader.prototype.RefreshWaypoints = function () {
+	        this._lazyImages.on('load', function () {
+	            Waypoint.refreshAll();
+	        });
+	    };
 	    StickyHeader.prototype.CreateHeaderWaypoint = function () {
 	        var that = this;
 	        var _waypoint = new Waypoint({
