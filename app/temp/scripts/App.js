@@ -11295,7 +11295,7 @@
 	        this._headerTriggerElement = jquery_1.default('.large-hero__title');
 	        this._pageSections = jquery_1.default('.page-section');
 	        this._headerLinks = jquery_1.default('.primary-nav a');
-	        this._lazyImages = jquery_1.default('lazyload');
+	        this._lazyImages = jquery_1.default('.lazyload');
 	        this.CreateHeaderWaypoint();
 	        this.createPageSectionWayPoints();
 	        this.RefreshWaypoints();

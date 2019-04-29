@@ -23,7 +23,7 @@ export class StickyHeader {
 
         this._headerLinks = $('.primary-nav a')
 
-        this._lazyImages = $('lazyload');
+        this._lazyImages = $('.lazyload');
        
 
         this.CreateHeaderWaypoint ();
